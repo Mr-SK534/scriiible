@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skribbl Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Draw &amp; Guess – Skribbl Clone</h1>
+    <section id="rules">
+      <h2>Rules of the Game</h2>
+      <ol>
+        <li>This is a multiplayer drawing & guessing game for 2–12 players per room. Play in real-time via browser!</li>
+        <li><b>Objective:</b> Draw the secret word so others can guess it. Score points by guessing correctly (faster = more points) or drawing well (everyone guesses your word).</li>
+      </ol>
+      <h3>How to Play</h3>
+      <ol>
+        <li>Join/Create Room: Enter name & 6-letter code. Share code with friends. Game auto-starts at 2+ players.</li>
+        <li>Rounds: 6 total, each turn has a new drawer. Info shows top-right.</li>
+        <li>Draw: Pick a word from 3 options, draw (no typing/speaking your word).</li>
+        <li>Guess: Type guesses in chat. Correct = points (faster=more). Drawer gets bonus for each correct guess.</li>
+        <li>Hints & Timer: Word length is shown as blanks. 75-second timer. Time up → reveal word → next round.</li>
+        <li>End Game: After 6 rounds, leaderboard pops up. Highest score wins!</li>
+      </ol>
+    </section>
+  </header>
+  <div id="menu">
+    <input type="text" id="username" placeholder="Your name" maxlength="15">
+    <input type="text" id="roomCode" placeholder="Room code e.g. ABC123" maxlength="6">
+    <button onclick="createRoom()">Create Room</button>
+    <button onclick="joinRoom()">Join Room</button>
+    <p id="error"></p>
+  </div>
+  <div id="game" class="hidden">
+    <div id="topBar">
+      <div id="roomInfo">Room: <span id="roomDisplay"></span></div>
+      <div id="timer">75</div>
+      <div id="roundInfo">Round 1/6</div>
+    </div>
+    <div id="main">
+      <!-- Chat Section (LEFT) -->
+      <div id="chatPanel">
+        <div id="chat">
+          <div id="messages"></div>
+        </div>
+        <div id="chatInputRow">
+          <input type="text" id="chatInput" placeholder="Type guess or message..." maxlength="100">
+          <button id="chatSendBtn" type="button">Send</button>
+        </div>
+      </div>
+      <!-- Canvas (CENTER) -->
+      <canvas id="canvas" width="800" height="500"></canvas>
+      <!-- Sidebar (RIGHT) -->
+      <div id="sidebar">
+        <div id="wordHint"></div>
+        <div id="wordChoices" class="hidden"></div>
+        <div id="tools">
+          <div id="colorPalette"></div>
+          <input type="color" id="colorPicker" value="#000000">
+          <input type="range" id="brushSize" min="2" max="30" value="5">
+          <button id="clearBtn">Clear</button>
+        </div>
+        <div id="players"></div>
+      </div>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
