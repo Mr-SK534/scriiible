@@ -6,9 +6,15 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: { origin: "*", methods: ["GET", "POST"] }
+
+// ADD THESE 3 LINES FOR VERCEL
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: { origin: "*" },
+  pingTimeout: 60000,
+  pingInterval: 25000
 });
+// END ADD
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
@@ -249,8 +255,7 @@ function getRandomWords(n) {
 }
 
 // Start
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`Open in multiple tabs → play!`);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
