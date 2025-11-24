@@ -1,5 +1,5 @@
 // ===== CONNECT TO BACKEND (LOCALHOST) =====
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'scriiible-production.up.railway.app';
 const socket = io(BACKEND_URL, { transports: ['websocket'] });
 
 // ===== PALETTE INFO =====
