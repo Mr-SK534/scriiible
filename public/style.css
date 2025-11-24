@@ -257,8 +257,8 @@ header {
   }
   #canvas {
     width: 98vw!important;
-    min-width: unset!important;
-    max-width: unset!important;
+    min-width: 60vw!important;
+    max-width: 90vw!important;
     height: 48vw!important;
     max-height: 55vw!important;
     border-radius: 12px;
