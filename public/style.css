@@ -258,9 +258,9 @@ header {
   #canvas {
     width: 98vw!important;
     min-width: 160vw!important;
-    max-width: 2000vw!important;
-    height: 168vw!important;
-    max-height: 200vw!important;
+    max-width: 200vw!important;
+    height: 200vw!important;
+    max-height: 550vw!important;
     border-radius: 12px;
   }
   #chat, #friendsChat {
