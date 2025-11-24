@@ -264,7 +264,7 @@ header {
     border-radius: 12px;
   }
   #chat, #friendsChat {
-    max-height: 18vw!important;
+    max-height: 15vw!important;
   }
 }
 @media (max-width:600px) {
@@ -273,6 +273,6 @@ header {
     padding-right: 1vw!important;
     font-size:1em!important;
   }
-  #canvas { height:38vw!important; }
-  #chat, #friendsChat { max-height: 50px!important; }
+  #canvas { height:120vw!important; }
+  #chat, #friendsChat { max-height: 30px!important; }
 }
