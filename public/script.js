@@ -1,5 +1,5 @@
 // ===== CONNECT TO BACKEND (LOCALHOST) =====
-const BACKEND_URL = 'scriiible-production.up.railway.app';
+const BACKEND_URL = 'https://scriible-backend.onrender.com';
 const socket = io(BACKEND_URL, { transports: ['websocket'] });
 
 // ===== PALETTE INFO =====
