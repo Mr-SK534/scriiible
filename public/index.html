@@ -2,70 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Skribbl Clone – Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skribbl Clone – Rules</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body { text-align: center; background: #222; color: #fff; }
+    .rules-container {
+      max-width: 600px;
+      margin: 35px auto 0;
+      background: #242f3f;
+      border-radius: 18px;
+      padding: 24px 18px 30px;
+      box-shadow: 0 4px 24px #1016;
+    }
+    h1 { margin-bottom: 0.7em; color: #FFA447; }
+    ol { text-align: left; margin: 0 0 1em 1.5em; }
+    .play-btn {
+      margin-top: 30px;
+      font-size: 1.3em;
+      padding: 18px 42px;
+      border-radius: 1.2em;
+      background: linear-gradient(90deg, #FFA447, #00B4D8);
+      color: #222;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .16s;
+    }
+    .play-btn:hover { background: #00B4D8; color: #fff; }
+    @media (max-width: 600px) {
+      .rules-container { padding: 13vw 3vw 10vw; font-size: 1.1em; }
+      h1 { font-size: 2em; }
+      .play-btn { padding: 12px 18px; width: 95%; font-size:1.14em;}
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1 style="color:#FFA447;font-size:2em;margin-bottom:8px;">Draw & Guess Game</h1>
-  </header>
-
-  <div id="menu">
-    <input id="username" type="text" placeholder="Enter your name" maxlength="16">
-    <input id="roomCode" type="text" placeholder="Room code (6 letters)" maxlength="6" style="text-transform:uppercase">
-    <button onclick="createRoom()">Create Room</button>
-    <button onclick="joinRoom()">Join Room</button>
-    <div id="error"></div>
+  <div class="rules-container">
+    <h1>How To Play</h1>
+    <ol>
+      <li>Enter a room or create one with a unique code. Share with friends!</li>
+      <li>One player draws a word. Others guess via chat. Fastest guess = more points.</li>
+      <li>No typing the exact word as hints in your drawing.</li>
+      <li>Be respectful: no spam, foul language, or revealing answers outside the game.</li>
+      <li>Six rounds per game. At the end, see who’s the top guesser and artist!</li>
+    </ol>
+    <button class="play-btn" onclick="window.location.href='game.html'">Play</button>
   </div>
-
-  <div id="game" class="hidden">
-    <div id="topBar" style="background:#333;">
-      <div id="roomDisplay" style="color:#FFA447;font-weight:bold;">Room:</div>
-      <div id="roundInfo" style="color:#fff;"></div>
-      <div id="timer" style="color:#FFA447;"></div>
-    </div>
-    <div id="main">
-      <!-- Chat panel for game guesses -->
-      <div id="chatPanel">
-        <h3 style="color:#00B4D8;margin-bottom:8px;">Guess Chat</h3>
-        <div id="chat">
-          <div id="messages"></div>
-        </div>
-        <div id="chatInputRow">
-          <input type="text" id="chatInput" placeholder="Type guess or message..." maxlength="100">
-          <button id="chatSendBtn" type="button">Send</button>
-        </div>
-      </div>
-      <!-- Friends chat box -->
-      <div id="friendsChatPanel">
-        <h3 style="color:#FFA447;margin-bottom:8px;">Friends Chat</h3>
-        <div id="friendsChat">
-          <div id="friendsMessages"></div>
-        </div>
-        <div id="friendsChatInputRow">
-          <input type="text" id="friendsChatInput" placeholder="Message your friends..." maxlength="100">
-          <button id="friendsChatSendBtn" type="button">Send</button>
-        </div>
-      </div>
-      <!-- Drawing canvas -->
-      <canvas id="canvas" width="800" height="500"></canvas>
-      <!-- Sidebar with palette, players, word hint, choices -->
-      <div id="sidebar">
-        <div id="players" style="margin-bottom:17px;text-align:left;"></div>
-        <div id="wordHint"></div>
-        <div id="wordChoices" class="hidden"></div>
-        <div id="colorPalette" style="margin:12px 0;"></div>
-        <input type="color" id="colorPicker" value="#000000" style="margin-bottom:8px;">
-        <div id="colorNameDisplay"></div>
-        <label for="brushSize" style="display:block;margin-top:10px;">Brush Size:</label>
-        <input type="range" id="brushSize" min="2" max="36" step="1" value="5" style="width:80%;">
-        <button id="clearBtn" style="display:block;margin:14px 0 8px 0;">Clear Canvas</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
